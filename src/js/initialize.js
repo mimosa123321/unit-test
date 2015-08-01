@@ -6,7 +6,7 @@ function initMain() {
 
     var element = document.createElement('p');
     element.setAttribute('id', 'mimoText');
-    element.innerHTML = 'mimosa2';
+    element.innerHTML = 'mimosa3';
     document.body.appendChild(element);
 
     window.main = new Main();
