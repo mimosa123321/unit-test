@@ -15,11 +15,11 @@
     "grunt-contrib-cssmin": "^0.13.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-jsbeautifier": "^0.2.10",
+    "grunt-mocha-istanbul": "^2.4.0",
     "grunt-mocha-phantomjs": "^1.0.0",
-    "grunt-mocha-test": "^0.12.7",
+    "load-grunt-tasks": "^3.2.0",
     "mocha": "^2.2.5"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Mimosa Poon"
 }

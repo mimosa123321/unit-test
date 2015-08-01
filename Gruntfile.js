@@ -72,13 +72,16 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        "mochaTest": {
-            test: {
+        "mocha_istanbul": {
+            coverage: {
+                src: 'test',
                 options: {
                     reporter: 'spec',
-                    quiet: false
-                },
-                src: ['test/**/*.spec.js']
+                    print: 'summary',
+                    coverage: true,
+                    root: './src',
+                    reportFormats: ['lcovonly']
+                }
             }
         },
         "mocha_phantomjs": {
@@ -86,17 +89,8 @@ module.exports = function(grunt) {
         }
     });
 
-    // Combine modules
-    grunt.loadNpmTasks('grunt-jsbeautifier');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-mocha-test');
-    grunt.loadNpmTasks('grunt-mocha-phantomjs');
-    grunt.loadNpmTasks('grunt-browserify');
-
-    grunt.registerTask('deploy', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mochaTest', 'mocha_phantomjs']);
-    grunt.registerTask('test', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mochaTest', 'mocha_phantomjs']);
+    require('load-grunt-tasks')(grunt);
+    grunt.registerTask('deploy', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mocha_istanbul', 'mocha_phantomjs']);
+    grunt.registerTask('test', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mocha_phantomjs', 'mocha_istanbul']);
     grunt.registerTask('default', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify']);
 };
