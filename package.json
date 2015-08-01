@@ -1,0 +1,29 @@
+{
+  "name": "Unit-Test",
+  "version": "1.0.0",
+  "description": "Unit test",
+  "main": "src",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "async": "^1.4.0",
+    "chai": "^3.2.0",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-mocha-selenium": "^1.0.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.5",
+    "phantomjs": "^1.9.17",
+    "selenium-webdriver": "^2.46.1"
+  },
+  "scripts": {
+    "test": "mocha test-e2e/form.spec.js",
+    "testvictor": "mocha test-e2e/victor.js"
+  },
+  "author": "Mimosa Poon"
+}
