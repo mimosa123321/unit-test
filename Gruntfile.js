@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     'use strict';
 
     grunt.initConfig({
-        browserify: {
+        "browserify": {
             options: {
                 browserifyOptions: {
                     debug: true
@@ -76,21 +76,14 @@ module.exports = function(grunt) {
             test: {
                 options: {
                     reporter: 'spec',
-                    captureFile: 'results.txt', // Optionally capture the reporter output to a file
-                    quiet: false, // Optionally suppress output to standard out (defaults to false)
-                    clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
+                    quiet: false
                 },
                 src: ['test/**/*.spec.js']
             }
         },
-        mochaSelenium: {
-            options: {
-                reporter: 'nyan',
-                usePromises: true,
-                useChrome: true
-            },
-            all: ['test/*.js' ]
-        },
+        "mocha_phantomjs": {
+            all: ['test-e2e/**/*.html']
+        }
     });
 
     // Combine modules
@@ -100,10 +93,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-mocha-test');
-//    grunt.loadNpmTasks('grunt-mocha-selenium');
+    grunt.loadNpmTasks('grunt-mocha-phantomjs');
     grunt.loadNpmTasks('grunt-browserify');
 
-    grunt.registerTask('deploy', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mochaTest']);
-    grunt.registerTask('test', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'mochaSelenium']);
+    grunt.registerTask('deploy', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mochaTest', 'mocha_phantomjs']);
+    grunt.registerTask('test', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify', 'uglify', 'mochaTest', 'mocha_phantomjs']);
     grunt.registerTask('default', ['jsbeautifier', 'clean', 'copy', 'cssmin', 'browserify']);
 };

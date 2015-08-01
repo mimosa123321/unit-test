@@ -1,6 +1,4 @@
-var Main = module.exports = function() {
-    console.log("init Main");
-};
+var Main = module.exports = function() {};
 
 Main.prototype.plus = function(a, b) {
     return a + b;
